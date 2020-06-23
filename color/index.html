@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Dwarf Fortress Color Generator</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="A colorscheme generator for Dwarf Fortress">
+    <meta name="author" content="manmademagic">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./map.js"></script>
+    <!-- script type="text/javascript" src="./map2.js"></script -->
+    <script type="text/javascript" src="./creatures.js"></script>
+    <script type="text/javascript" src="./df.js"></script>
+    <script type="text/javascript" src="./colorschemes.js"></script>
+
+    <link rel="stylesheet" href="./style.css">
+    <meta property="og:title" content="Dwarf Fortress Color Generator">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://manmademagic.com/dfcolorgen/" />
+    <meta property="og:image" content="https://manmademagic.com/dfcolorgen/preview.png">
+    <meta property="og:image:width" content="330">
+    <meta property="og:image:height" content="400">
+    <meta property="og:description" content="A colorscheme generator for Dwarf Fortress">
+</head>
+
+<body name="RGB_BLACK">
+    <ul id="nav">
+        <li><a href="https://blomquist.xyz" >Home</a></li>
+        <li><a href="https://github.com/manmademagic/DFColorGen" target=_blank>Original</a></li>
+        <li><a href="https://bay12games.com/dwarves" target=_blank>Dwarf Fortress Home</a></li>
+    </ul>
+
+    <table class="colors" style="">
+        <tr>
+            <td>
+                <div class="wrapper">
+                    <input id="BLACK_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'BLACK\')'}" value="000000">                    </div>
+            </td>
+            <td>
+                <div class="wrapper">
+                    <input id="BLUE_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'BLUE\')'}" value="000080"> </div>
+            </td>
+            <td>
+                <div class="wrapper">
+                    <input id="GREEN_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'GREEN\')'}" value="008000">                    </div>
+            </td>
+            <td>
+                <div class="wrapper">
+                    <input id="CYAN_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'CYAN\')'}" value="008080"> </div>
+            </td>
+            <td>
+                <div class="wrapper">
+                    <input id="RED_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'RED\')'}" value="800000"> </div>
+            </td>
+            <td>
+                <div class="wrapper">
+                    <input id="MAGENTA_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'MAGENTA\')'}" value="800080">                    </div>
+            </td>
+            <td>
+                <div class="wrapper">
+                    <input id="BROWN_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'BROWN\')'}" value="808000">                    </div>
+            </td>
+            <td>
+                <div class="wrapper">
+                    <input id="LGRAY_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'LGRAY\')'}" value="C0C0C0">                    </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="wrapper">
+                    <input id="DGRAY_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'DGRAY\')'}" value="808080">                    </div>
+            </td>
+            <td>
+                <div class="wrapper">
+                    <input id="LBLUE_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'LBLUE\')'}" value="0000FF">                    </div>
+            </td>
+            <td>
+                <div class="wrapper">
+                    <input id="LGREEN_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'LGREEN\')'}" value="00FF00">                    </div>
+            </td>
+            <td>
+                <div class="wrapper">
+                    <input id="LCYAN_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'LCYAN\')'}" value="00FFFF">                    </div>
+            </td>
+            <td>
+                <div class="wrapper">
+                    <input id="LRED_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'LRED\')'}" value="FF0000"> </div>
+            </td>
+            <td>
+                <div class="wrapper">
+                    <input id="LMAGENTA_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'LMAGENTA\')'}" value="FF00FF">                    </div>
+            </td>
+            <td>
+                <div class="wrapper">
+                    <input id="YELLOW_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'YELLOW\')'}" value="FFFF00">                    </div>
+            </td>
+            <td>
+                <div class="wrapper">
+                    <input id="WHITE_PICKER" class="jscolor {onFineChange:'colorPicker(this,\'WHITE\')'}" value="FFFFFF">                    </div>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <div class="fileUpload buttonWrapper"> <span>Upload File</span>
+        <input type="file" id="fileUpload" name="file" class="button" /> </div>
+    <div class="presetSelector selectWrapper" onchange="presetSelect()" style="display:inline-block">
+        <select name="presetSelector" id="presetSelector">
+            <option value="">Select Preset...</option>
+        </select>
+    </div>
+    <div class="fileName">
+        <input type="text" id="fileName" value="ColorScheme.txt" /> </div>
+    <div class="fileDownload buttonWrapper"> <span>Download File</span>
+        <input type="button" value="Download" onclick="saveTextAsFile()" class="button"> </div>
+    <hr />
+    <div name="RGB_WHITE" class="output"> <span name="fileout" id="RGB_BLACK_R">[BLACK_R:0]</span>
+        <br /> <span name="fileout" id="RGB_BLACK_G">[BLACK_G:0]</span>
+        <br /> <span name="fileout" id="RGB_BLACK_B">[BLACK_B:0]</span>
+        <br /> <span name="fileout" id="RGB_BLUE_R">[BLUE_R:0]</span>
+        <br /> <span name="fileout" id="RGB_BLUE_G">[BLUE_G:0]</span>
+        <br /> <span name="fileout" id="RGB_BLUE_B">[BLUE_B:128]</span>
+        <br /> <span name="fileout" id="RGB_GREEN_R">[GREEN_R:0]</span>
+        <br /> <span name="fileout" id="RGB_GREEN_G">[GREEN_G:128]</span>
+        <br /> <span name="fileout" id="RGB_GREEN_B">[GREEN_B:0]</span>
+        <br /> <span name="fileout" id="RGB_CYAN_R">[CYAN_R:0]</span>
+        <br /> <span name="fileout" id="RGB_CYAN_G">[CYAN_G:128]</span>
+        <br /> <span name="fileout" id="RGB_CYAN_B">[CYAN_B:128]</span>
+        <br /> <span name="fileout" id="RGB_RED_R">[RED_R:128]</span>
+        <br /> <span name="fileout" id="RGB_RED_G">[RED_G:0]</span>
+        <br /> <span name="fileout" id="RGB_RED_B">[RED_B:0]</span>
+        <br /> <span name="fileout" id="RGB_MAGENTA_R">[MAGENTA_R:128]</span>
+        <br /> <span name="fileout" id="RGB_MAGENTA_G">[MAGENTA_G:0]</span>
+        <br /> <span name="fileout" id="RGB_MAGENTA_B">[MAGENTA_B:128]</span>
+        <br /> <span name="fileout" id="RGB_BROWN_R">[BROWN_R:128]</span>
+        <br /> <span name="fileout" id="RGB_BROWN_G">[BROWN_G:128]</span>
+        <br /> <span name="fileout" id="RGB_BROWN_B">[BROWN_B:0]</span>
+        <br /> <span name="fileout" id="RGB_LGRAY_R">[LGRAY_R:192]</span>
+        <br /> <span name="fileout" id="RGB_LGRAY_G">[LGRAY_G:192]</span>
+        <br /> <span name="fileout" id="RGB_LGRAY_B">[LGRAY_B:192]</span>
+        <br /> <span name="fileout" id="RGB_DGRAY_R">[DGRAY_R:128]</span>
+        <br /> <span name="fileout" id="RGB_DGRAY_G">[DGRAY_G:128]</span>
+        <br /> <span name="fileout" id="RGB_DGRAY_B">[DGRAY_B:128]</span>
+        <br /> <span name="fileout" id="RGB_LBLUE_R">[LBLUE_R:0]</span>
+        <br /> <span name="fileout" id="RGB_LBLUE_G">[LBLUE_G:0]</span>
+        <br /> <span name="fileout" id="RGB_LBLUE_B">[LBLUE_B:255]</span>
+        <br /> <span name="fileout" id="RGB_LGREEN_R">[LGREEN_R:0]</span>
+        <br /> <span name="fileout" id="RGB_LGREEN_G">[LGREEN_G:255]</span>
+        <br /> <span name="fileout" id="RGB_LGREEN_B">[LGREEN_B:0]</span>
+        <br /> <span name="fileout" id="RGB_LCYAN_R">[LCYAN_R:0]</span>
+        <br /> <span name="fileout" id="RGB_LCYAN_G">[LCYAN_G:255]</span>
+        <br /> <span name="fileout" id="RGB_LCYAN_B">[LCYAN_B:255]</span>
+        <br /> <span name="fileout" id="RGB_LRED_R">[LRED_R:255]</span>
+        <br /> <span name="fileout" id="RGB_LRED_G">[LRED_G:0]</span>
+        <br /> <span name="fileout" id="RGB_LRED_B">[LRED_B:0]</span>
+        <br /> <span name="fileout" id="RGB_LMAGENTA_R">[LMAGENTA_R:255]</span>
+        <br /> <span name="fileout" id="RGB_LMAGENTA_G">[LMAGENTA_G:0]</span>
+        <br /> <span name="fileout" id="RGB_LMAGENTA_B">[LMAGENTA_B:255]</span>
+        <br /> <span name="fileout" id="RGB_YELLOW_R">[YELLOW_R:255]</span>
+        <br /> <span name="fileout" id="RGB_YELLOW_G">[YELLOW_G:255]</span>
+        <br /> <span name="fileout" id="RGB_YELLOW_B">[YELLOW_B:0]</span>
+        <br /> <span name="fileout" id="RGB_WHITE_R">[WHITE_R:255]</span>
+        <br /> <span name="fileout" id="RGB_WHITE_G">[WHITE_G:255]</span>
+        <br /> <span name="fileout" id="RGB_WHITE_B">[WHITE_B:255]</span>
+        <br /> </div>
+
+
+    <div class="map" name="RGB_BLACK" id="preview">
+        <table name="RGB_BLACK" id="map">
+            <tbody></tbody>
+        </table>
+    </div>
+    <hr />
+
+    <table id="creatures" class="creatures">
+        <tbody>
+
+        </tbody>
+
+    </table>
+</body>
