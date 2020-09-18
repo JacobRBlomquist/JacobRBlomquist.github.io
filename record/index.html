@@ -72,7 +72,7 @@ navigator.getUserMedia = navigator.getUserMedia ||
 				setStatus("Error capturing audio: "+error)
 			});
 		} else {
-			setStatus("getUserMedia is not supported on this browser");
+			setStatus("getUserMedia is not supported on this browser\nThis only works when using HTTPS, if you get an error, try typing \"https://\" in front of the URL in the address bar.");
 			return;
 		}
 
@@ -138,6 +138,6 @@ navigator.getUserMedia = navigator.getUserMedia ||
   <div>
     <span id=status></span>
   </div>
-	<p>This only works when using HTTPS, if you get an error, try typing "https://" in front of the URL in the address bar.</p>
+	
 </body>
 </html>
