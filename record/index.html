@@ -106,6 +106,8 @@ navigator.getUserMedia = navigator.getUserMedia ||
 
         }
 	function stop(){
+		if(!grecorder)
+			return;
 		grecorder.disconnect();
 		//merge buffers
 		PCM32fSamples = new Float32Array(recordingLength);
@@ -129,9 +131,9 @@ navigator.getUserMedia = navigator.getUserMedia ||
 <body>
   <h1>Record and playback audio in browser.</h1>
   <div>
-    <button onclick="start()">Start</button>
-    <button onclick="stop()">Stop</button>
-    <button onclick="play()">Play</button>
+    <button onclick="start">Start</button>
+    <button onclick="stop">Stop</button>
+    <button onclick="play">Play</button>
   </div>
   <div>
     <span id=status></span>
