@@ -1,4 +1,118 @@
 <!DOCTYPE html>
+<html>
+<head>
+
+
+    <base target="_blank">
+
+    <title>gUM audio</title>
+<link rel="stylesheet" href="../dfma/main.css">
+
+</head>
+
+<body>
+
+<ul id="nav">
+        <li><a href="https://blomquist.xyz" target=_blank>Home</a></li>
+ </ul>
+	
+<div id="container">
+
+    <h1>getUserMedia, audio only</span>
+    </h1>
+
+<!--     <audio id="gum-local" controls autoplay></audio> -->
+
+    <p class="warning">Warning: if you're not using headphones,this page will cause feedback.</p>
+
+<!--     <p>Render the audio stream from an audio-only <code>getUserMedia()</code> call with an audio element.</p>
+
+    <p>The <code>MediaStream</code> object <code><em>stream</em></code> passed to the <code>getUserMedia()</code>
+        callback is in global scope, so you can inspect it from the console.</p>
+    <div> -->
+        <span id="errorMsg"></span>
+    </div>
+
+
+</div>
+
+
+
+
+    <script>
+
+'use strict';
+
+// Put variables in global scope to make them available to the browser console.
+const audio = document.querySelector('audio');
+
+const constraints = window.constraints = {
+  audio:  {
+	latency: 0.00,
+        autoGainControl: false,
+        echoCancellation: {exact: false},
+	sampleSize: 10,
+	mozAutoGainControl:false,
+	mozNoiseSuppression: false,
+	
+        advanced: [{
+            echoCancellation: {exact: false}
+          }, 
+          {googEchoCancellation: {exact: false}}, 
+          {googExperimentalEchoCancellation: {exact: false}}, 
+          {googDAEchoCancellation: {exact: false}}, 
+          {googAutoGainControl: {exact: false}}, 
+          {googExperimentalAutoGainControl: {exact: false}}, 
+          {googNoiseSuppression: {exact: false}}, 
+          {googExperimentalNoiseSuppression: {exact: false}}, 
+          {googHighpassFilter: {exact: false}}, 
+          {googTypingNoiseDetection: {exact: false}}, 
+          {googAudioMirroring: {exact: false}}, 
+          {googNoiseReduction: {exact: false}},
+	  {mozNoiseSuppression:{exact: false}},
+  	  {mozAutoGainControl: {exact: false}}
+        ]  
+      },
+  video: false
+};
+
+function handleSuccess(stream) {
+  /*const audioTracks = stream.getAudioTracks();
+ /* console.log('Got stream with constraints:', constraints);
+  console.log('Using audio device: ' + audioTracks[0].label);
+  stream.oninactive = function() {
+    console.log('Stream ended');
+  };
+  window.stream = stream; // make variable available to browser console
+  audio.srcObject = stream;*/
+//https://developers.google.com/web/updates/2012/09/Live-Web-Audio-Input-Enabled
+
+	window.AudioContext = window.AudioContext || window.webkitAudioContext;
+	let audioContext = new AudioContext();
+	let mediaStreamSource = audioContext.createMediaStreamSource(stream)
+	mediaStreamSource.connect(audioContext.destination);
+
+}
+
+function handleError(error) {
+  const errorMessage = 'navigator.MediaDevices.getUserMedia error: ' + error.message + ' ' + error.name;
+  document.getElementById('errorMsg').innerText = errorMessage;
+  console.log(errorMessage);
+}
+
+navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
+
+
+	</script>
+
+
+</body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -153,3 +267,4 @@ navigator.getUserMedia = navigator.getUserMedia ||
 	
 </body>
 </html>
+ -->
