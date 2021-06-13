@@ -1,0 +1,25 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+}
+#sketchContainer, canvas {
+  display: block;
+  margin: auto auto;
+}
+
+canvas{
+  border: 1px solid white;
+}
+
+p{
+  padding: 10px
+}
+
+header{
+  display: block;
+  text-align: center;
+  margin: auto auto;
+}
