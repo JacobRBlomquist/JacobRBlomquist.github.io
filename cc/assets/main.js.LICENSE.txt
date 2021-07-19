@@ -63,14 +63,6 @@
  */
 
 /**
- * Binary functions.
- *
- * @author n1474335 [n1474335@gmail.com]
- * @copyright Crown Copyright 2018
- * @license Apache-2.0
- */
-
-/**
  * Custom error type for handling Dish type errors.
  * i.e. where the Dish cannot be successfully translated between types
  *
@@ -133,14 +125,6 @@
  * @copyright Crown Copyright 2018
  * @license Apache-2.0
  *
- */
-
-/**
- * Hexadecimal functions.
- *
- * @author n1474335 [n1474335@gmail.com]
- * @copyright Crown Copyright 2016
- * @license Apache-2.0
  */
 
 /**
