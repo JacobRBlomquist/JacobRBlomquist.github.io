@@ -3065,7 +3065,7 @@ header>h4+p {
 }
 
 header.major {
-	margin: 0 0 4rem 0;
+	margin: 0 0 2rem 0;
 	text-align: center;
 }
 
@@ -3414,7 +3414,7 @@ body.is-preload #wrapper.fade-in:before {
 
 #intro {
 	color: #ffffff;
-	padding: 8rem 4rem 6rem 4rem;
+	padding: 6rem 4rem 6rem 4rem;
 	-moz-align-items: center;
 	-webkit-align-items: center;
 	-ms-align-items: center;
@@ -3439,7 +3439,7 @@ body.is-preload #wrapper.fade-in:before {
 	cursor: default;
 	text-align: center;
 	z-index: 1;
-	min-height: 100vh;
+	min-height: 70vh;
 }
 
 #intro input,
@@ -3535,7 +3535,7 @@ body.is-preload #wrapper.fade-in:before {
 }
 
 #intro+#header {
-	margin-top: -20rem;
+	margin-top: 0rem;
 }
 
 #intro+#header .logo {
@@ -3544,7 +3544,7 @@ body.is-preload #wrapper.fade-in:before {
 	-ms-transform: translateY(2rem);
 	transform: translateY(2rem);
 	opacity: 0;
-	visibility: hidden;
+	/* visibility: hidden; */
 }
 
 #intro.hidden {
@@ -3647,11 +3647,11 @@ body.is-preload #intro:not(.hidden)+#header+#nav {
 	-webkit-justify-content: -webkit-flex-end;
 	-ms-justify-content: -ms-flex-end;
 	justify-content: flex-end;
-	pointer-events: none;
-	-moz-user-select: none;
+	/* pointer-events: none; */
+	/* -moz-user-select: none;
 	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+	-ms-user-select: none; */
+	/* user-select: none; */
 	height: 20rem;
 	padding-bottom: 8rem;
 	position: relative;
@@ -3918,7 +3918,7 @@ body.is-preload #intro:not(.hidden)+#header+#nav {
 }
 
 #main>* {
-	padding: 4rem 4rem 2rem 4rem;
+	padding: 2rem 4rem 2rem 4rem;
 	border-top: solid 2px #eeeeee;
 	margin: 0;
 }
@@ -3932,7 +3932,7 @@ body.is-preload #intro:not(.hidden)+#header+#nav {
 }
 
 #main>.post {
-	padding: 8rem 8rem 6rem 8rem;
+	padding: 4rem 8rem 0rem 8rem;
 }
 
 #main>.post header.major>.date {
