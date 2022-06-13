@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love you Michelle!</title>
+    <link rel="icon" href="./favicon.ico" type="image/ico" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+    <style>
+        :root,
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Kdam Thmor Pro', sans-serif;
+            overflow: hidden;
+        }
+
+        #container {
+            position: fixed;
+            z-index: 20;
+            background-color: #666666;
+            /* opacity: 95%; */
+            padding: 2em;
+            border-radius: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 5px 10px #112750;
+        }
+
+        #secret_value {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        #submit {
+            width: 100%;
+            background-color: #5c95ff;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 100%;
+        }
+
+        #submit:hover {
+            background-color: #4374cf;
+        }
+
+        #hero,
+        #status,
+        p {
+            text-align: center;
+            color: #5c95ff;
+        }
+
+        #status {
+            color: #F87575;
+        }
+    </style>
+</head>
+
+<script>
+    const secret = 'iloveyousomuch!'
+    function process(e) {
+        if (e.preventDefault)
+            e.preventDefault();
+
+        let input = document.getElementById("secret_value").value
+        let status_text = document.getElementById('status')
+        input = input.toLowerCase()
+
+        console.log("Input:", input)
+        console.log(secret)
+
+        if (input == secret) {
+            console.log("Correct!")
+            status_text.textContent = "Correct!... Processing..."
+            setTimeout(go, 3000);
+        } else {
+            console.log("Wrong!")
+            status_text.textContent = "Incorrect. Try Again!"
+
+        }
+
+        console.log(e);
+
+
+        return false;
+    }
+
+    function go() {
+        window.location.href = './asawa.html'
+    }
+
+    window.onload = () => {
+
+        let form = document.getElementById('secret')
+        if (form.attachEvent) {
+            form.attachEvent("submit", process);
+        } else {
+            form.addEventListener("submit", process);
+        }
+
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+<script>
+
+    function draw() {
+
+        createCanvas(windowWidth, windowHeight)
+
+        background(20, 220, 200);
+
+        strokeWeight(4);
+
+
+
+        for (var y = 0; y <= height; y += 15) {
+            for (var x = 0; x <= width; x += 15) {
+                if ((x % 30) == 0) {
+                    // right line
+                    line(x, y, x + 9, y - 9);
+                    // randomize color
+                    stroke(random(0, 255));
+                } else {
+                    // left line
+                    line(x, y, x + 9, y + 9);
+                    stroke(random(0, 255));
+                }
+            }
+        }
+        noLoop();
+    } 
+</script>
+
+<body>
+    <div id="container">
+        <h1 id="hero">Enter the Secret!</h1>
+        <form id="secret">
+            <input id="secret_value" type="text" name="secret" />
+            <button type="submit" id="submit">Submit</button>
+        </form>
+        <p><span id="status">TEST</span></p>
+    </div>
+</body>
+
+</html>
