@@ -17,10 +17,11 @@ function setup() {
 
 function draw() {
   
-  image(mask,0,0,width,height)
+  // image(mask,0,0,width,height)
+  
   
   stroke(255);
-  background(0,0,0,0.5);
+  background(0,0,0,5);
   let speed = 100;
 
   for (let i = 0; i < speed; i++) {

@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><script src="https://unpkg.com/@ruffle-rs/ruffle"></script><title>NEDM</title><script src="p5.min.js"></script><script src="p5.sound.min.js"></script><script>let music, nedm;
+        function mouseClicked() {
+            nedm.play();
+        }
+        function preload() {
+            music = loadSound("nedm.mp3");
+            nedm = loadSound("nedmv.mp3");
+
+        }
+        function setup() {
+            music.setVolume(1);
+            music.loop();
+            nedm.setVolume(1);
+
+            getAudioContext().resume();
+
+        }
+
+        function draw() {
+            getAudioContext().resume();
+        }</script></head><body background="happycat.jpg" bgcolor="#000000"><table width="100%" height="100%"><tr><td valign="middle"><center><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="700" height="550" id="nedm" align="middle"><param name="allowScriptAccess" value="sameDomain"><param name="movie" value="nedm2.swf"><param name="quality" value="high"><param name="bgcolor" value="#000000"><embed src="nedm2.swf" quality="high" bgcolor="#000000" width="700" height="550" name="nedm" align="middle" allowscriptaccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></object></center></td></tr></table></body></html>
