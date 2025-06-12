@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven Years of Growing Together</title>
+    <meta name="description" content="A romantic journey through seven years of love, told through the seasons">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Seven Years of Growing Together</h1>
+        <p class="subtitle">Jacob ❤️ Michelle</p>
+        <p class="subtitle">Click on the garden to discover our journey through the seasons of love</p>
+    </header>
+
+    <nav class="season-nav">
+        <div class="season-icon spring active" data-season="spring" title="Spring">
+            <span class="icon">🌸</span>
+            <span class="label">Spring</span>
+        </div>
+        <div class="season-icon summer locked" data-season="summer" title="Summer">
+            <span class="icon">☀️</span>
+            <span class="label">Summer</span>
+        </div>
+        <div class="season-icon fall locked" data-season="fall" title="Fall">
+            <span class="icon">🍂</span>
+            <span class="label">Fall</span>
+        </div>
+        <div class="season-icon winter locked" data-season="winter" title="Winter">
+            <span class="icon">❄️</span>
+            <span class="label">Winter</span>
+        </div>
+    </nav>
+
+    <main class="garden-container">
+        <div class="garden-display" id="garden-display">
+            <div class="garden-scene spring-scene active" data-season="spring">
+                <div class="season-content hidden">
+                    <div class="poem-content">
+                        <h3>Spring - Where It All Began</h3>
+                        <p class="poem">
+                            Like flowers blooming in the morning dew,<br>
+                            Our love began fresh, tender, and true.<br>
+                            Each laugh, each glance, each moment we'd share,<br>
+                            Planted seeds of love beyond compare.<br><br>
+                            
+                            In spring we met, in spring we grew,<br>
+                            Two hearts becoming one, me and you.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="garden-scene summer-scene" data-season="summer">
+                <div class="season-content hidden">
+                    <div class="poem-content">
+                        <h3>Summer - Love in Full Bloom</h3>
+                        <p class="poem">
+                            Though miles apart, our hearts stayed near,<br>
+                            Through every sunset, every tear.<br>
+                            The ring that bound us, promise true,<br>
+                            Until the day I'd marry you.<br><br>
+                            
+                            Summer's warmth could not compare<br>
+                            To love that conquered distance there.<br><br>
+                            (Wish I planned our engagement more!)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="garden-scene fall-scene" data-season="fall">
+                <div class="season-content hidden">
+                    <div class="poem-content">
+                        <h3>Fall - Growing Our Family</h3>
+                        <p class="poem">
+                            Like autumn leaves that dance and fall,<br>
+                            We learned that love encompasses all.<br>
+                            New chapters written, dreams take flight,<br>
+                            Growing together, day and night.<br><br>
+                            
+                            In harvest time we reaped the best:<br>
+                            A family formed, our hearts blessed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="garden-scene winter-scene" data-season="winter">
+                <div class="season-content hidden">
+                    <div class="poem-content">
+                        <h3>Winter - Seven Years Strong</h3>
+                        <p class="poem">
+                            Through winter's quiet, peaceful days,<br>
+                            We've learned love works in countless ways.<br>
+                            Seven years of joy and tears,<br>
+                            Growing stronger through the years.<br><br>
+                            
+                            Like evergreens that never fade,<br>
+                            Our love's foundation has been made.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="click-hint">
+            <p>Click on the garden to begin your journey</p>
+        </div>
+    </main>
+
+    <!-- Quiz Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-season-title">Season Quiz</h3>
+            </div>
+            <div class="modal-body">
+                <p id="quiz-question">Question will appear here</p>
+                <div class="quiz-options" id="quiz-options">
+                    <!-- Options will be inserted here -->
+                </div>
+                <div class="quiz-feedback" id="quiz-feedback"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

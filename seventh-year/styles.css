@@ -1,0 +1,407 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+.season-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    gap: 2rem;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.season-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.season-icon.active {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.season-icon.spring.active {
+    background: linear-gradient(135deg, #ffb3ba, #ffdfba);
+}
+
+.season-icon.summer.active {
+    background: linear-gradient(135deg, #ffffba, #baffc9);
+}
+
+.season-icon.fall.active {
+    background: linear-gradient(135deg, #ffb3ba, #ffdfba);
+}
+
+.season-icon.winter.active {
+    background: linear-gradient(135deg, #bae1ff, #e0e0e0);
+}
+
+.season-icon.locked {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(100%);
+}
+
+.season-icon .icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.season-icon .label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.garden-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    position: relative;
+}
+
+.garden-display {
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.garden-display:hover {
+    transform: scale(1.02);
+}
+
+.garden-scene {
+    display: none;
+    position: relative;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.active {
+    display: block;
+}
+
+.garden-scene.spring-scene {
+    background-image: url('./spring.png');
+    background-color: #90EE90; /* Fallback if image doesn't load */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* Ensure spring shows by default */
+.garden-scene.spring-scene.active {
+    display: block !important;
+}
+
+.garden-scene.summer-scene {
+    background-image: url('./summer.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.garden-scene.fall-scene {
+    background-image: url('./fall.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.garden-scene.winter-scene {
+    background-image: url('./winter.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.season-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: opacity 0.5s ease;
+}
+
+.season-content.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.poem-content {
+    text-align: center;
+    padding: 2rem;
+    max-width: 600px;
+}
+
+.poem-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.poem {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.click-hint {
+    text-align: center;
+    margin-top: 1rem;
+    font-style: italic;
+    color: #7f8c8d;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: white;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal {
+    transform: scale(1);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 15px 15px 0 0;
+}
+
+.modal-header h3 {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+#quiz-question {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    color: #2c3e50;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.quiz-option {
+    background: #f8f9fa;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.quiz-option:hover {
+    background: #e9ecef;
+    border-color: #667eea;
+}
+
+.quiz-option.correct {
+    background: #d4edda;
+    border-color: #28a745;
+}
+
+.quiz-option.incorrect {
+    background: #f8d7da;
+    border-color: #dc3545;
+}
+
+.quiz-feedback {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.quiz-feedback.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.quiz-feedback.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .season-nav {
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .season-icon {
+        min-width: 60px;
+        padding: 0.8rem;
+    }
+    
+    .season-icon .icon {
+        font-size: 1.5rem;
+    }
+    
+    .season-icon .label {
+        font-size: 0.8rem;
+    }
+    
+    .garden-container {
+        padding: 1rem;
+    }
+    
+    .poem-content {
+        padding: 1rem;
+    }
+    
+    .poem-content h3 {
+        font-size: 1.5rem;
+    }
+    
+    .poem {
+        font-size: 1rem;
+    }
+    
+    .modal {
+        width: 95%;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .season-nav {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .season-icon {
+        min-width: 50px;
+        padding: 0.6rem;
+    }
+    
+    .season-icon .icon {
+        font-size: 1.2rem;
+    }
+    
+    .season-icon .label {
+        font-size: 0.7rem;
+    }
+}
+
+.season-transition {
+    animation: fadeInOut 1s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
