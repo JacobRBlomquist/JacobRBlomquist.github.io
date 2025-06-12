@@ -229,8 +229,8 @@ class AnniversaryWebsite {
                 // Hide content after 8 seconds to let them enjoy the poem
                 setTimeout(() => {
                     content.classList.add('hidden');
-                    console.log('Poem hidden after 8 seconds');
-                }, 8000);
+                    console.log('Poem hidden after 12 seconds');
+                }, 12000);
             }
         }
 
